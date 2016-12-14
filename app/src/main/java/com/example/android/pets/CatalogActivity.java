@@ -38,6 +38,12 @@ public class CatalogActivity extends AppCompatActivity {
         displayDatabaseInfo();
     }
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+        displayDatabaseInfo();
+    }
+
     /**
      * Temporary helper method to display information in the onscreen TextView about the state of
      * the pets database.
@@ -65,8 +71,8 @@ public class CatalogActivity extends AppCompatActivity {
         }
     }
 
-    //insert dummy data
-    private void insertData(String name, String breed, int gender, int weight){
+    //create new pet
+    private void insertPet(String name, String breed, int gender, int weight){
 
         //instance of db helper
         PetDbHelper dummyPet = new PetDbHelper(this);
@@ -101,7 +107,7 @@ public class CatalogActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to a click on the "Insert dummy data" menu option
             case R.id.action_insert_dummy_data:
-                insertData("Coconut", "Collie", PetEntry.GENDER_FEMALE, 18);
+                insertPet("Coconut", "Collie", PetEntry.GENDER_FEMALE, 18);
 
                 //update UI
                 displayDatabaseInfo();
